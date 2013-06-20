@@ -40,7 +40,8 @@ simPower <- function(beta0 = 0,
                      alpha = .05, 
                      alternative = 2, 
                      direction = "greater"){
-  alpha <- alpha / alternative
+  ##note the 2 is for a two sided test
+  alpha <- alpha / alternative / 2
   ##make sure mtime was put in the correct order
   mtime <- sort(mtime)
   ##the number of measurements per subject
@@ -150,9 +151,9 @@ simPower <- function(beta0 = 0,
       if (direction == "greater") r <- as.integer( t > qnorm(1 - alpha) )
       else r <- as.integer( t < qnorm(alpha) )
       
-      return( c(r, t, b, vc, s) )
+      return( c(r, b, vc, s) )
     }
   )
-  rval <- t(out)
+  rval <- apply(t(out), 2, mean)[1] * 100
   return(rval)
 }
