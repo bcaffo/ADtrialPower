@@ -38,7 +38,7 @@ shinyServer(
 
         output$alpha <- renderPrint({
             if (input$go == 0) return(cat(""))
-            else cat(input$alpha * 100, "%, which was corrected for two sided tests and ", input$m, " comparisons", sep = "")
+            else cat(input$alpha * 100, "%, which was corrected for two sided tests and ", input$arms, " comparisons", sep = "")
         })
         
         ##run the power calculation
@@ -57,7 +57,8 @@ shinyServer(
                         method = input$method,
                         n = input$n,
                         nosim = input$nosim,
-                        alpha = input$alpha, 
+                        ##Bonf. correct for the number of treatment arms
+                        alpha = input$alpha / input$arms, 
                         direction = "less"
                     ), "% Using ", input$nosim, " simulations", sep = "")
             }

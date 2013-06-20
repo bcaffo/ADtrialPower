@@ -41,7 +41,7 @@ simPower <- function(beta0 = 0,
                      alternative = 2, 
                      direction = "greater"){
   ##note the 2 is for a two sided test
-  alpha <- alpha / alternative / 2
+  alpha <- alpha / alternative 
   ##make sure mtime was put in the correct order
   mtime <- sort(mtime)
   ##the number of measurements per subject

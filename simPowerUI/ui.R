@@ -16,6 +16,7 @@ shinyUI(
                              "Random slope only" = "rs", 
                              "Random intercept only" = "ri")),
             numericInput("n", "Number of subject per arm", 100, min = 10, step = 10),
+            numericInput("arms", "Number of treatment arms, (excluding the control)", 1, min = 1, step =1),
             numericInput("m", "Number of equally spaced visits, 2 for only baseline and followup", 3, min = 2, step = 1),
             numericInput("yrs", "Total length of trial in years", 1, min = .5, step = .5),
             numericInput("nosim", "Number of simulations to run. Use 10 to test things out, 100 for preliminary results and at least 1,000 for final results", 10, min = 100, step = 100),
