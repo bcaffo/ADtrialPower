@@ -45,7 +45,7 @@ shinyServer(
         output$power <- renderPrint({
             if (input$go == 0) return(cat(""))
             else{
-                cat("Estimated power was ", 
+                isolate(cat("Estimated power was ", 
                     simPower(
                         mtime = seq(from = 0, to = input$yrs, length = input$m),
                         beta1 = input$beta1, 
@@ -61,6 +61,7 @@ shinyServer(
                         alpha = input$alpha / input$arms, 
                         direction = "less"
                     ), "% Using ", input$nosim, " simulations", sep = "")
+                        )
             }
         })
     }
