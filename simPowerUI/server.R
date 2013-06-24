@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyIncubator)
 library(lme4)
 library(mvtnorm)
 source("simPower.R")
